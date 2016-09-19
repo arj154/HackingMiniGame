@@ -18,8 +18,6 @@ public class Main {
         Scanner user_input = new Scanner(System.in);
 
         chooseMode(user_input);
-
-
     }
 
     private static void chooseMode(Scanner user_input) {
@@ -32,7 +30,16 @@ public class Main {
         System.out.println("5. Very Hard");
 
         String difficulty = user_input.next();
-        int difficultyMode = Integer.parseInt(difficulty);
+        int difficultyMode = 1;
+
+        try {
+
+            difficultyMode = Integer.parseInt(difficulty);
+        } catch (NumberFormatException e) {
+
+            e.printStackTrace();
+            chooseMode(user_input);
+        }
 
         System.out.flush();
 
@@ -120,7 +127,7 @@ public class Main {
 
                 if (guess.charAt(i) == randomWord.charAt(i)) {
 
-                    correctChars = correctChars+1;
+                    correctChars = correctChars + 1;
                 }
             }
 
